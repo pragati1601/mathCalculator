@@ -18,57 +18,31 @@ public class mathCalculator extends CordovaPlugin {
       {
          this.add(args, callbackContext);
          return true;
-      }
-      else if(action.equals("substract")){
-          this.substract(args, callbackContext)
-
-      }
+      }      
         return false;
     }
 
    
 
     private void add(JSONArray args, CallbackContext callback){
-
         if(args != null){
         try{
-
             int p1 = Integer.parseInt(args.getJSONOject(0).getString("param1"));
             int p2 = Integer.parseInt(args.getJSONOject(0).getString("param2"));
-        callback.success(""+ (p1+p2));
+            callback.success(""+ (p1+p2));
         }
         catch(Exception ex){
-
+           callback.error("something went wrong", ex);
         }
 
-
-}
-else{
-    callback.error(null value);
-}
+        }
+        else{
+            callback.error("please do not pass null value");
+        }
 
     }
 
-      private void substract(JSONArray args, CallbackContext callback){
-
-        if(args != null){
-        try{
-
-            int p1 = Integer.parseInt(args.getJSONOject(0).getString("param1"));
-            int p2 = Integer.parseInt(args.getJSONOject(0).getString("param2"));
-        callback.success(""+ (p1-p2));
-        }
-        catch(Exception ex){
-
-        }
-
-
-}
-else{
-    callback.error(null value);
-}
-
-    }
+    
 
 
 }
